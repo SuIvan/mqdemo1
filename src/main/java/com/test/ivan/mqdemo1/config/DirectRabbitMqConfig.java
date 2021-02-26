@@ -37,7 +37,7 @@ public class DirectRabbitMqConfig {
     Binding buildingDirect(){
         return BindingBuilder.bind(TestDirectQueue()).to(TestDirectExchange()).with("TestDirectRouting");
     }
-    
+
     @Bean
     DirectExchange lonelyDirectExchange() {
         return new DirectExchange("lonelyDirectExchange");
