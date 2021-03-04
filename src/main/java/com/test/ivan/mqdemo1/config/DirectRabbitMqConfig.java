@@ -32,6 +32,12 @@ public class DirectRabbitMqConfig {
         return new DirectExchange("TestDirectExchange",true,false);
     }
 
+    //单纯的创建一个交换机
+    @Bean
+    DirectExchange LonelyDirectExchange(){
+        return new DirectExchange("LonelyDirectExchange");
+    }
+
     //将队列绑定到交换机上
     @Bean
     Binding buildingDirect(){

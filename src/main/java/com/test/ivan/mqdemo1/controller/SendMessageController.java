@@ -75,4 +75,30 @@ public class SendMessageController {
         rabbitTemplate.convertAndSend("fanoutExchange", null, map);
         return "ok";
     }
+
+    @GetMapping("/sendNoExchange")
+    public String sendNoExchange() {
+        String messageId = String.valueOf(UUID.randomUUID());
+        String messageData = "message: testFanoutMessage ";
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Map<String, Object> map = new HashMap<>();
+        map.put("messageId", messageId);
+        map.put("messageData", messageData);
+        map.put("createTime", createTime);
+        rabbitTemplate.convertAndSend("sendNoExchange", null, map);
+        return "ok";
+    }
+
+    @GetMapping("/sendLonelyExchange")
+    public String sendLonelyExchange() {
+        String messageId = String.valueOf(UUID.randomUUID());
+        String messageData = "message: sendLonelyExchange ";
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Map<String, Object> map = new HashMap<>();
+        map.put("messageId", messageId);
+        map.put("messageData", messageData);
+        map.put("createTime", createTime);
+        rabbitTemplate.convertAndSend("LonelyDirectExchange", "TestDirectRouting", map);
+        return "ok";
+    }
 }

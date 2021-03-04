@@ -1,14 +1,18 @@
 server:
   port: 9001
 spring:
-  #¸øÏîÄ¿À´¸öÃû×Ö
+  #ç»™é¡¹ç›®æ¥ä¸ªåå­—
   application:
     name: rabbitmq-provider
-  #ÅäÖÃrabbitMq ·şÎñÆ÷
+  #é…ç½®rabbitMq æœåŠ¡å™¨
   rabbitmq:
     host: 127.0.0.1
     port: 5672
     username: admin
     password: admin
-    #ĞéÄâhost ¿ÉÒÔ²»ÉèÖÃ,Ê¹ÓÃserverÄ¬ÈÏhost
+    #ç¡®è®¤æ¶ˆæ¯å·²å‘é€åˆ°äº¤æ¢æœº(Exchange)
+    publisher-confirm-type: correlated
+    #ç¡®è®¤æ¶ˆæ¯å·²å‘é€åˆ°é˜Ÿåˆ—(Queue)
+    publisher-returns: true
+    #ï¿½ï¿½ï¿½ï¿½host ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½,Ê¹ï¿½ï¿½serverÄ¬ï¿½ï¿½host
 #    virtual-host: JCcccHost
